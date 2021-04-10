@@ -43,7 +43,7 @@
                                 <td><?php echo $data['tgl_pinjam'];?></td>
                                 <td><?php echo $data['tgl_kembali'];?></td>
                                 <td>
-                                    <?php 
+                                    <?php
 
 		                            $denda = 1000;
 

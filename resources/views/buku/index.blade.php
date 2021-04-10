@@ -8,7 +8,13 @@
                     <h4>Data Buku Digital Library</h4>
                 </div>
                 <div class="panel-body">
-                    <a href="?page=buku&aksi=tambah" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
+                    <a href="" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
+
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                     @endif
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
@@ -23,29 +29,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $no = 1;
-                                $sql = $koneksi->query("select * from tb_buku");
-
-                                while ($data=$sql->fetch_assoc()) {
-                                    # code...
-                                ?> 
-
+                                @foreach ($posts as $index => $buku)
                                 <tr>
-                                    <td><?php echo $no++; ?></td>
-                                    <td><?php echo $data['judul'];?></td>
-                                    <td><?php echo $data['pengarang'];?></td>
-                                    <td><?php echo $data['penerbit'];?></td>
-                                    <td><?php echo $data['isbn'];?></td>
-                                    <td><?php echo $data['jumlah_buku'];?></td>
+                                    <td>{{ $index + $posts->firstItem() }}</td>
+                                    <td>{{ $buku->judul }}</td>
+                                    <td>{{ $buku->pengarang }}</td>
+                                    <td>{{ $buku->penerbit }}</td>
+                                    <td>{{ $buku->isbn }}</td>
+                                    <td>{{ $buku->jumlah_buku }}</td>
                                     <td>
-                                        <a href="?page=buku&aksi=ubah&id=<?php echo $data['id']; ?>" class="btn btn-info">Ubah</a>
-                                        <a onclick="return confirm('Anda yakin ingin meghapus data ini ?')" href="?page=buku&aksi=hapus&id=<?php echo $data['id']; ?>" class="btn btn-danger">Hapus</a>
+                                        <a href="" class="btn btn-info">Ubah</a>
+                                        <a onclick="return confirm('Anda yakin ingin meghapus data ini ?')" href="" class="btn btn-danger">Hapus</a>
                                     </td>
                                 </tr>
-                                <?php }
-                                ?>
+
                             </tbody>
+                            @endforeach
+                        </table>
+                        {{ $posts->links() }}
                     </div>
                 </div>
             </div>
