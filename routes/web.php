@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KatalogController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
@@ -28,3 +30,18 @@ Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
 
 Route::resource('admin', AdminController::class);
+
+Route::prefix('siswa')->group(function () {
+    Route::get('/{nis}', [SiswaController::class,'index']);
+    Route::get('/edit', [SiswaController::class,'edit'])->name('siswa.edit');
+    // Route::get('/tes', function() {
+    //     return view('siswa.katalog.katalog');
+    // });
+});
+
+Route::resource('siswa/katalog', KatalogController::class);
+
+
+
+// Route::get('/siswa/{nis}', [SiswaController::class,'index']);
+
