@@ -15,8 +15,8 @@ class SiswaController extends Controller
 
     public function katalog()
     {
-        $buku = Buku::get(all);
-        return view('siswa.katalog', compact('buku'));
+        $posts= Buku::orderBy('id','asc')->paginate(5);
+        return view('buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
 
     public function edit($nis)
