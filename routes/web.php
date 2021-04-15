@@ -31,12 +31,13 @@ Route::resource('admin', AdminController::class);
 Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index']);
     Route::get('/edit', [SiswaController::class,'edit'])->name('siswa.edit');
+    Route::get('/katalog', [SiswaController::class,'katalog']);
     // Route::get('/tes', function() {
     //     return view('siswa.katalog.katalog');
     // });
 });
 
-Route::resource('siswa/katalog', KatalogController::class);
+// Route::resource('siswa/{nis}/katalog', KatalogController::class);
 
 
 

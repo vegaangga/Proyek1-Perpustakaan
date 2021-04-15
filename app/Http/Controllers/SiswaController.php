@@ -13,6 +13,12 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa'));
     }
 
+    public function katalog()
+    {
+        $buku = Buku::get(all);
+        return view('siswa.katalog', compact('buku'));
+    }
+
     public function edit($nis)
     {
         //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
@@ -42,12 +48,5 @@ class SiswaController extends Controller
 
             return redirect()->route('siswa.index')
                 ->with('success', 'Mahasiswa Berhasil Diupdate');
-    }
-
-    public function katalog()
-    {
-        $posts= Buku::orderBy('id','asc')->paginate(5);
-        return view('siswa.katalog.katalog',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
-
     }
 }

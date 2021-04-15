@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class KatalogController extends Controller
@@ -14,7 +16,7 @@ class KatalogController extends Controller
     public function index()
     {
         $posts= Buku::orderBy('id','asc')->paginate(5);
-        return view('siswa.katalog.katalog',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+        return view('buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
 
     /**
