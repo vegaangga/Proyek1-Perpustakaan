@@ -38,8 +38,10 @@
                                     <td>{{ $buku->isbn }}</td>
                                     <td>{{ $buku->jumlah_buku }}</td>
                                     <td>
-                                        <a href="" class="btn btn-info">Ubah</a>
-                                        <a onclick="return confirm('Anda yakin ingin meghapus data ini ?')" href="" class="btn btn-danger">Hapus</a>
+                                        <a class="btn btn-info" href="{{ route('buku.show', $buku->id) }}">Show</a>
+                                        <a class="btn btn-primary" href="{{ route('buku.edit', $buku->id) }}">Edit</a>
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
 

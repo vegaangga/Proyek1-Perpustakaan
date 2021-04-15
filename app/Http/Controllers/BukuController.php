@@ -59,7 +59,8 @@ class BukuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Buku = Buku::where('id', $id)->first();
+        return view('admin.buku.ubah', compact('Buku'));
     }
 
     /**
