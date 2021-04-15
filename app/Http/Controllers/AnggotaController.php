@@ -27,7 +27,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('anggota.create');
     }
 
     /**
@@ -38,7 +38,20 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nis'=>'required',
+            'nama'=>'required',
+            'tempat_lahir'=>'required',
+            'tanggal_lahir'=>'required',
+            'jk'=>'required',
+            'jurusan'=>'required'
+            ]);
+
+        //fungsieloquentuntukmenambahdata
+        Anggota::create($request->all());
+        //jikadataberhasilditambahkan,akankembalikehalamanutama
+        return redirect()->route('anggota.index')->with('success','Murid Berhasil Ditambahkan');
+
     }
 
     /**

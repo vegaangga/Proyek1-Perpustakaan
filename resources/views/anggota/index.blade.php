@@ -8,7 +8,7 @@
                     <h4>Data Anggota Digital Library</h4>
             </div>
             <div class="panel-body">
-                <a href="" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
+                <a href="{{ route('anggota.create') }}" class="btn btn-success" style="margin-bottom: 5px">Tambah Data</a>
 
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">

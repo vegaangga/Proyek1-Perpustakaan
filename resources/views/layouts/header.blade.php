@@ -8,7 +8,14 @@
         </button>
         <a class="navbar-brand" href="index.html">SMKNEDAS</a>
     </div>
-<div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;">
-Last access : <?php echo date('d F Y'); ?> &nbsp;<a href="logout.php" class="btn btn-danger square-btn-adjust">Logout</a>
-</div>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
 </nav>

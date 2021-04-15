@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,13 +25,9 @@ Route::get('/', function () {
 });
 
 Route::resource('anggota', AnggotaController::class);
-
 Route::resource('buku', BukuController::class);
-
 Route::resource('transaksi', TransaksiController::class);
-
 Route::resource('admin', AdminController::class);
-
 Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index']);
     Route::get('/edit', [SiswaController::class,'edit'])->name('siswa.edit');
@@ -45,3 +42,6 @@ Route::resource('siswa/katalog', KatalogController::class);
 
 // Route::get('/siswa/{nis}', [SiswaController::class,'index']);
 
+//Login
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
