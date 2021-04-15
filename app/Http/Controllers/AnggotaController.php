@@ -17,7 +17,7 @@ class AnggotaController extends Controller
         //$posts= Anggota::all()->paginate(5);
         $posts= Anggota::orderBy('nis','asc')->paginate(5);
         //return view('anggota.anggota', ['posts' => $posts]);
-        return view('anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+        return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
 
     /**

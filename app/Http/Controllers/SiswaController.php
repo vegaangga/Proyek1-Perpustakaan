@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Buku;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 
