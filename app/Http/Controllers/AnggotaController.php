@@ -27,7 +27,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('anggota.create');
+        return view('admin.anggota.create');
     }
 
     /**
@@ -71,9 +71,10 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nis)
     {
-        //
+        $anggota = Anggota::where('nis', $nis)->first();
+        return view('admin.anggota.ubah', compact('anggota'));
     }
 
     /**

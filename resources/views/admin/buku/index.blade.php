@@ -9,7 +9,6 @@
                 </div>
                 <div class="panel-body">
                     <a href="" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
-
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>

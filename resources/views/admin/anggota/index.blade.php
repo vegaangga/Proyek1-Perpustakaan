@@ -42,8 +42,14 @@
                                 <td>{{ $murid->jk }}</td>
                                 <td>{{ $murid->jurusan }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info">Ubah</a>
-                                    <a onclick="return confirm('Anda yakin ingin meghapus data ini ?')" href="?" class="btn btn-danger">Hapus</a>
+                                    <form action="{{ route('anggota.destroy',$murid->nis) }}" method="POST">
+                                        <a class="btn btn-info" href="{{ route('anggota.show',$murid->nis) }}">Show</a>
+                                        <a class="btn btn-primary" href="{{ route('anggota.edit',$murid->nis) }}">Edit</a>
+                                    @csrf
+                                    @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <a class="btn btn-warning"href="{{url('nilai/'.$murid->nim)}}">Nilai</a>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -13,5 +13,12 @@ class Anggota extends Model
     protected $primaryKey = 'nis';
     protected $keyType = 'string';
 
-    
+    protected $fillable=[
+        'nis',
+        'nama',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jk',
+        'jurusan'
+    ];
 }
