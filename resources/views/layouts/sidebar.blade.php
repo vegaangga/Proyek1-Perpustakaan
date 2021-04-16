@@ -2,7 +2,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
         <li class="text-center">
-            <img src="../img/logo-smk.png" class="user-image img-responsive"/>
+            <img src="{{asset ('img/logo-smk.png') }}" class="user-image img-responsive"/>
             </li>
             <li>
                 <a  href="{{url('/')}}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>

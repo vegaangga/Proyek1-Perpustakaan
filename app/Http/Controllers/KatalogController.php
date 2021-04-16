@@ -16,7 +16,7 @@ class KatalogController extends Controller
     public function index()
     {
         $posts= Buku::orderBy('id','asc')->paginate(5);
-        return view('buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+        return view('admin.buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
 
     /**

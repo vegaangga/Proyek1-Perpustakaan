@@ -34,17 +34,21 @@ Route::get('/buku/{nis}/edit', [TesController::class,'edit']);
 Route::resource('anggota', AnggotaController::class);
 Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
+Route::resource('katalog', KatalogController::class);
 Route::resource('admin', AdminController::class);
 Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index']);
-    Route::get('/edit', [SiswaController::class,'edit'])->name('siswa.edit');
-    Route::get('/{nis}/katalog', [SiswaController::class,'katalog']);
+    Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
+    Route::put('/edit/{nis}', [SiswaController::class,'update'])->name('siswa.update');
+    // Route::get('/{nis}/katalog', [SiswaController::class,'katalog']);
     // Route::get('/tes', function() {
     //     return view('siswa.katalog.katalog');
     // });
 });
 
-// Route::resource('siswa/{nis}/katalog', KatalogController::class);
+// Route::resource('siswa', SiswaController::class);
+
+Route::get('siswa/katalog', [KatalogController::class, 'index']);
 
 
 
