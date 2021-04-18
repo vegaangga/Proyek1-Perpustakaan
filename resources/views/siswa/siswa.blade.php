@@ -18,7 +18,7 @@
 <body>
     <div id="wrapper">
         <!-- Header -->
-        @include('layouts.header')
+        @include('layouts.head')
         <!-- End Header -->
 
         <!-- Navbar Samping  -->
