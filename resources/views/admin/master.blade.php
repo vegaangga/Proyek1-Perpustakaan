@@ -45,9 +45,9 @@
 
     <!-- Scripts -->
    <script src="{{ asset('js/app.js') }}" defer></script>
-   
+
     <!-- JQUERY SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" 
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
     integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
@@ -58,13 +58,13 @@
 
     <script src="{{ asset('js/dataTables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('js/dataTables/dataTables.bootstrap.js') }}"></script>
-        <script>
+    {{-- <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
-    </script>
+    </script> --}}
          <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 
 
 </body>
