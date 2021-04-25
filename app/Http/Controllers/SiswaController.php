@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Siswa;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -48,5 +49,11 @@ class SiswaController extends Controller
 
             return redirect()->route('siswa.index')
                 ->with('success', 'Mahasiswa Berhasil Diupdate');
+    }
+
+    public function show($nis)
+    {
+        $transaksi = Transaksi::groupby('nis', $nis)->first();
+        return view('siswa.riwayat', compact('transaksi'));
     }
 }

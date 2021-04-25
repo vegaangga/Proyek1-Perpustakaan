@@ -11,7 +11,7 @@
                 <a  href="{{ route('katalog.index') }}"><i class="fa fa-users fa-3x"></i> Katalog Buku</a>
             </li>
              <li>
-                <a  href="{{ route('transaksi.index') }}"><i class="fa fa-table fa-3x"></i> Riwayat Peminjaman</a>
+                <a  href="{{ url('/riwayat/{nis}') }}"><i class="fa fa-table fa-3x"></i> Riwayat Peminjaman</a>
             </li>
         </ul>
 

@@ -45,9 +45,10 @@ class TransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nim)
     {
-        //
+        $transaksi = Transaksi::where('nim', $nim)->first();
+        return view('siswa.riwayat', compact('transaksi'));
     }
 
     /**

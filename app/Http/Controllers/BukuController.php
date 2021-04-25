@@ -12,9 +12,25 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts= Buku::orderBy('id','asc')->paginate(5);
+        // $posts= Buku::orderBy('id','asc')->paginate(5);
+        // return view('admin.buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+
+        if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
+            $posts= Buku::where('judul', 'like', "%".$request->search."%")
+            ->orwhere('pengarang', 'like', "%".$request->search."%")
+            ->orwhere('penerbit', 'like', "%".$request->search."%")
+            ->orwhere('tahun_terbit', 'like', "%".$request->search."%")
+            ->orwhere('isbn', "%".$request->search."%")
+            ->orwhere('jumlah_buku', 'like', "%".$request->search."%")
+            ->orwhere('lokasi', 'like', "%".$request->search."%")
+            ->orwhere('tgl_input', 'like', "%".$request->search."%")
+            ->paginate();
+        } else { // Pemilihan jika tidak melakukan pencarian
+            //fungsi eloquent menampilkan data menggunakan pagination
+            $posts= Buku::paginate(5); // Pagination menampilkan 5 data
+        }
         return view('admin.buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
 
     }

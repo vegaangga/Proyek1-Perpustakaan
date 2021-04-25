@@ -15,10 +15,6 @@ class AnggotaController extends Controller
      */
     public function index(Request $request)
     {
-        // //$posts= Anggota::all()->paginate(5);
-        // $posts= Anggota::orderBy('nis','asc')->paginate(5);
-        // //return view('anggota.anggota', ['posts' => $posts]);
-        // return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
 
         if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
             $posts= Anggota::where('nis', 'like', "%".$request->search."%")
@@ -34,12 +30,6 @@ class AnggotaController extends Controller
         }
         return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
-    // public function cari(Request $request)
-	// {
-	// 	$posts=Anggota::where('nama',$request->nama)->first();
-    //     return view('admin.anggota.index',compact('posts'));
-
-	// }
 
     /**
      * Show the form for creating a new resource.

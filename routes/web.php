@@ -41,20 +41,11 @@ Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index']);
     Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
     Route::put('/edit/{nis}', [SiswaController::class,'update'])->name('siswa.update');
-    // Route::get('/{nis}/katalog', [SiswaController::class,'katalog']);
-    // Route::get('/tes', function() {
-    //     return view('siswa.katalog.katalog');
-    // });
-});
+    Route::get('/riwayat/{nis}', [SiswaController::class,'show'])->name('siswa.riwayat');
 
-// Route::resource('siswa', SiswaController::class);
+});
 
 Route::get('siswa/katalog', [KatalogController::class, 'index']);
 
-
-
-// Route::get('/siswa/{nis}', [SiswaController::class,'index']);
-
-//Login
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
