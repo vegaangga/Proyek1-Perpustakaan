@@ -15,6 +15,19 @@
                         <p>{{ $message }}</p>
                     </div>
                 @endif
+                <!-- Form Search -->
+            <div class="float-left my-2">
+                <form action="{{ route('Anggota.cari') }}" method="GET">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i> Cari</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <!-- End Form Search -->
+
 
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Anggota;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnggotaController extends Controller
 {
@@ -19,6 +20,12 @@ class AnggotaController extends Controller
         //return view('anggota.anggota', ['posts' => $posts]);
         return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
+    public function cari(Request $request)
+	{
+		$posts=Anggota::where('nama',$request->nama)->first();
+        return view('admin.anggota.index',compact('posts'));
+
+	}
 
     /**
      * Show the form for creating a new resource.
