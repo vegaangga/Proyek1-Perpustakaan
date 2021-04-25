@@ -35,17 +35,15 @@ Route::resource('anggota', AnggotaController::class);
 // Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
 Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
-Route::resource('katalog', KatalogController::class);
+//Route::resource('katalog', KatalogController::class);
 Route::resource('admin', AdminController::class);
 Route::prefix('siswa')->group(function () {
-    Route::get('/{nis}', [SiswaController::class,'index']);
+    Route::get('/{nis}', [SiswaController::class,'index'])->name('siswa.index');
     Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
     Route::put('/edit/{nis}', [SiswaController::class,'update'])->name('siswa.update');
-    Route::get('/riwayat/{nis}', [SiswaController::class,'show'])->name('siswa.riwayat');
-
+    Route::get('/{nis}/riwayat', [SiswaController::class,'show'])->name('siswa.show');
+    Route::get('/{nis}/katalog', [SiswaController::class, 'katalog'])->name('siswa.katalog');
 });
-
-Route::get('siswa/katalog', [KatalogController::class, 'index']);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

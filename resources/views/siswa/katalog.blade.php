@@ -22,9 +22,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($posts as $index => $buku)
+                                @foreach ($siswa as $buku)
                                 <tr>
-                                    <td>{{ $index + $posts->firstItem() }}</td>
+                                    <td></td>
                                     <td>{{ $buku->judul }}</td>
                                     <td>{{ $buku->pengarang }}</td>
                                     <td>{{ $buku->penerbit }}</td>
@@ -35,7 +35,7 @@
                             </tbody>
                             @endforeach
                         </table>
-                        {{ $posts->links() }}
+                        {{ $siswa->links() }}
                     </div>
                 </div>
             </div>

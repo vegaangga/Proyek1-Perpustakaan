@@ -14,10 +14,10 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa'));
     }
 
-    public function katalog()
+    public function katalog($nis)
     {
-        $posts= Buku::orderBy('id','asc')->paginate(5);
-        return view('admin.buku.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+        $siswa= Buku::orderBy('id','asc')->paginate(5);
+        return view('siswa.tes');
     }
 
     public function edit($nis)
@@ -53,7 +53,9 @@ class SiswaController extends Controller
 
     public function show($nis)
     {
-        $transaksi = Transaksi::groupby('nis', $nis)->first();
-        return view('siswa.riwayat', compact('transaksi'));
+        $siswa = Transaksi::where('nis', $nis)->first();
+        return view('siswa.riwayat', compact('siswa'));
+
     }
+
 }
