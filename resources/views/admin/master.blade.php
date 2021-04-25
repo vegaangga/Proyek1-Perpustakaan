@@ -13,7 +13,7 @@
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
-    <link href="{{ asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+    {{-- <link href="{{ asset('js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" /> --}}
 </head>
 <body>
     <div id="wrapper">
@@ -44,15 +44,15 @@
      <!-- METISMENU SCRIPTS -->
      <script src="{{ asset('js/jquery.metisMenu.js') }}"></script>
        <!-- CUSTOM SCRIPTS -->
- 
- 
-     <script src="{{ asset('js/dataTables/jquery.dataTables.js') }}"></script>
+
+
+     {{-- <script src="{{ asset('js/dataTables/jquery.dataTables.js') }}"></script>
      <script src="{{ asset('js/dataTables/dataTables.bootstrap.js') }}"></script>
          <script>
              $(document).ready(function () {
                  $('#dataTables-example').dataTable();
              });
-     </script>
+     </script> --}}
           <!-- CUSTOM SCRIPTS -->
      <script src="{{ asset('js/custom.js') }}"></script>
 
