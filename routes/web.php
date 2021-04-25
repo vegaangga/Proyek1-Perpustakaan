@@ -5,6 +5,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TesController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
@@ -47,3 +48,13 @@ Route::prefix('siswa')->group(function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('laporan')->group(function () {
+    Route::get('/', [LaporanController::class,'index']);
+    // Route::get('/cetak_buku', function () {
+    //     return view('admin.laporan.buku_pdf');
+    // });
+    Route::get('/cetak_buku', [LaporanController::class,'cetak_buku'])->name('laporan.buku');
+    Route::get('/cetak_anggota', [LaporanController::class,'cetak_anggota'])->name('laporan.anggota');
+    Route::get('/cetak_transaksi', [LaporanController::class,'cetak_transaksi'])->name('laporan.transaksi');
+});
