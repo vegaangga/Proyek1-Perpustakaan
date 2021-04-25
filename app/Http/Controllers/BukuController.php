@@ -26,7 +26,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.buku.tambah');
     }
 
     /**
@@ -37,7 +37,21 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul'=>'required',
+            'pengarang'=>'required',
+            'penerbit'=>'required',
+            'tahun_terbit'=>'required',
+            'isbn'=>'required',
+            'jumlah_buku'=>'required',
+            'lokasi'=>'required',
+            'tgl_input'=>'required'
+            ]);
+
+        //fungsieloquentuntukmenambahdata
+        Buku::create($request->all());
+        //jikadataberhasilditambahkan,akankembalikehalamanutama
+        return redirect()->route('buku.index')->with('success','Buku Berhasil Ditambahkan');
     }
 
     /**
@@ -48,7 +62,8 @@ class BukuController extends Controller
      */
     public function show($id)
     {
-        //
+        $buku = Buku::where('id', $id)->first();
+        return view('admin.buku.show', compact('buku'));
     }
 
     /**
@@ -60,7 +75,7 @@ class BukuController extends Controller
     public function edit($id)
     {
         $Buku = Buku::where('id', $id)->first();
-        return view('admin.buku.ubah', compact('Buku'));
+        return view('admin.buku.edit', compact('Buku'));
     }
 
     /**
@@ -72,7 +87,21 @@ class BukuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'judul'=>'required',
+            'pengarang'=>'required',
+            'penerbit'=>'required',
+            'tahun_terbit'=>'required',
+            'isbn'=>'required',
+            'jumlah_buku'=>'required',
+            'lokasi'=>'required',
+            'tgl_input'=>'required'
+            ]);
+
+        //fungsi eloquent untuk menambah data
+        Buku::create($request->all());
+        //jikadataberhasilditambahkan,akankembalikehalamanutama
+        return redirect()->route('buku.index')->with('success','Buku Berhasil Diupdate');
     }
 
     /**
@@ -83,6 +112,8 @@ class BukuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Buku::find($id)->delete();
+        return redirect()->route('buku.index')
+            -> with('success', 'Buku Berhasil Dihapus');
     }
 }

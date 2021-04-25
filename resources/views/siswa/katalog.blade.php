@@ -9,13 +9,6 @@
                     <h4>Katalog Buku Perpustakaan</h4>
                 </div>
                 <div class="panel-body">
-                    <a href="" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                     @endif
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
@@ -26,7 +19,6 @@
                                     <th>Penerbit</th>
                                     <th>ISBN</th>
                                     <th>Jumlah Buku</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,10 +30,6 @@
                                     <td>{{ $buku->penerbit }}</td>
                                     <td>{{ $buku->isbn }}</td>
                                     <td>{{ $buku->jumlah_buku }}</td>
-                                    <td>
-                                        <a href="" class="btn btn-info">Ubah</a>
-                                        <a onclick="return confirm('Anda yakin ingin meghapus data ini ?')" href="" class="btn btn-danger">Hapus</a>
-                                    </td>
                                 </tr>
 
                             </tbody>

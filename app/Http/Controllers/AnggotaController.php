@@ -60,9 +60,10 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nis)
     {
-        //
+        $anggota = Anggota::where('nis', $nis)->first();
+        return view('admin.anggota.show', compact('anggota'));
     }
 
     /**
@@ -84,9 +85,21 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nis)
     {
-        //
+        $request->validate([
+            'nis'=>'required',
+            'nama'=>'required',
+            'tempat_lahir'=>'required',
+            'tanggal_lahir'=>'required',
+            'jk'=>'required',
+            'jurusan'=>'required'
+            ]);
+
+        //fungsieloquentuntukmenambahdata
+        Anggota::create($request->all());
+        //jikadataberhasilditambahkan,akankembalikehalamanutama
+        return redirect()->route('anggota.index')->with('success','Siswa Berhasil Diupdate');
     }
 
     /**
@@ -95,8 +108,10 @@ class AnggotaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nis)
     {
-        //
+        Anggota::find($nis)->delete();
+        return redirect()->route('anggota.index')
+            -> with('success', 'Siswa Berhasil Dihapus');
     }
 }

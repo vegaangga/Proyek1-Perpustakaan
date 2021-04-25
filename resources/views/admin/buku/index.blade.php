@@ -5,15 +5,17 @@
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div align="center" class="panel-heading">
-                    <h4>Data Buku Digital Library</h4>
+                    <h4>Data Buku Perpustakaan SMK NEDAS</h4>
                 </div>
                 <div class="panel-body">
-                    <a href="" class="btn btn-primary" style="margin-bottom: 5px">Tambah Data</a>
+                    <a href="{{ route('buku.create') }}" class="btn btn-success" style="margin-bottom: 5px">Tambah Data</a>
+
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
                         </div>
                      @endif
+
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
@@ -37,10 +39,14 @@
                                     <td>{{ $buku->isbn }}</td>
                                     <td>{{ $buku->jumlah_buku }}</td>
                                     <td>
-                                        <a class="btn btn-info" href="{{ route('buku.show', $buku->id) }}">Show</a>
-                                        <a class="btn btn-primary" href="{{ route('buku.edit', $buku->id) }}">Edit</a>
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <form action="{{ route('buku.destroy',$buku->id) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('buku.show', $buku->id) }}">Show</a>
+                                            <a class="btn btn-primary" href="{{ route('buku.edit', $buku->id) }}">Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
+                                            type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
 

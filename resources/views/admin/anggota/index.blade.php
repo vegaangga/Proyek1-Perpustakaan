@@ -5,7 +5,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div align="center" class="panel-heading">
-                    <h4>Data Anggota Digital Library</h4>
+                    <h4>Data Anggota Perpustakaan SMKNEDAS</h4>
             </div>
             <div class="panel-body">
                 <a href="{{ route('anggota.create') }}" class="btn btn-success" style="margin-bottom: 5px">Tambah Data</a>
@@ -47,8 +47,8 @@
                                         <a class="btn btn-primary" href="{{ route('anggota.edit',$murid->nis) }}">Edit</a>
                                     @csrf
                                     @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                        <a class="btn btn-warning"href="{{url('nilai/'.$murid->nim)}}">Nilai</a>
+                                        <button onclick="return confirm('Anda yakin ingin meghapus data ini ?')"
+                                        type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
