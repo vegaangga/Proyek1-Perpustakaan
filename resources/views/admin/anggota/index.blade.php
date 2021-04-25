@@ -17,7 +17,7 @@
                 @endif
                 <!-- Form Search -->
             <div class="float-left my-2">
-                <form action="{{ route('Anggota.cari') }}" method="GET">
+                <form action="{{ route('anggota.index') }}" method="GET">
                     <div class="input-group custom-search-form">
                         <input type="text" class="form-control" name="search" placeholder="Search...">
                         <span class="input-group-btn">

@@ -13,19 +13,33 @@ class AnggotaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$posts= Anggota::all()->paginate(5);
-        $posts= Anggota::orderBy('nis','asc')->paginate(5);
-        //return view('anggota.anggota', ['posts' => $posts]);
+        // //$posts= Anggota::all()->paginate(5);
+        // $posts= Anggota::orderBy('nis','asc')->paginate(5);
+        // //return view('anggota.anggota', ['posts' => $posts]);
+        // return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
+
+        if($request->has('search')){ // Pemilihan jika ingin melakukan pencarian
+            $posts= Anggota::where('nis', 'like', "%".$request->search."%")
+            ->orwhere('nama', 'like', "%".$request->search."%")
+            ->orwhere('tempat_lahir', 'like', "%".$request->search."%")
+            ->orwhere('tanggal_lahir', 'like', "%".$request->search."%")
+            ->orwhere('jk', 'like', "%".$request->search."%")
+            ->orwhere('jurusan', 'like', "%".$request->search."%")
+            ->paginate();
+        } else { // Pemilihan jika tidak melakukan pencarian
+            //fungsi eloquent menampilkan data menggunakan pagination
+            $posts= Anggota::paginate(5); // Pagination menampilkan 5 data
+        }
         return view('admin.anggota.index',compact('posts'))->with('i',(request()->input('posts',1)-1)*5);
     }
-    public function cari(Request $request)
-	{
-		$posts=Anggota::where('nama',$request->nama)->first();
-        return view('admin.anggota.index',compact('posts'));
+    // public function cari(Request $request)
+	// {
+	// 	$posts=Anggota::where('nama',$request->nama)->first();
+    //     return view('admin.anggota.index',compact('posts'));
 
-	}
+	// }
 
     /**
      * Show the form for creating a new resource.

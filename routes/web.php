@@ -32,7 +32,7 @@ Route::get('/', function () {
 Route::get('/buku/{nis}/edit', [TesController::class,'edit']);
 
 Route::resource('anggota', AnggotaController::class);
-Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
+// Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
 Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
 Route::resource('katalog', KatalogController::class);
