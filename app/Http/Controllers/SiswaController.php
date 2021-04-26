@@ -14,10 +14,12 @@ class SiswaController extends Controller
         return view('siswa.index', compact('siswa'));
     }
 
-    public function katalog($nis)
+    public function katalog()
     {
-        $siswa= Buku::orderBy('id','asc')->paginate(5);
-        return view('siswa.tes');
+        // $siswa= Buku::orderBy('id','asc')->paginate(5);
+        // return view('siswa.tes');
+        $siswa = Buku::orderBy('id','asc')->paginate(5);
+        return view('siswa.katalog',compact('siswa'))->with('i',(request()->input('siswa',1)-1)*5);
     }
 
     public function edit($nis)

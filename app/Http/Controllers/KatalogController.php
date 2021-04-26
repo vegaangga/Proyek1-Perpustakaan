@@ -15,7 +15,7 @@ class KatalogController extends Controller
      */
     public function index()
     {
-        $siswa= Buku::orderBy('id','asc')->paginate(5);
+        $siswa = Buku::orderBy('id','asc')->paginate(5);
         return view('siswa.katalog',compact('siswa'))->with('i',(request()->input('siswa',1)-1)*5);
     }
 
