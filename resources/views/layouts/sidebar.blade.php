@@ -8,17 +8,17 @@
 
             @if($a == 0 || $a == 1)
                 <li>
-                    <a href="http://127.0.0.1:8000" ><i class="fa fa-dashboard fa-3x"></i>Dashboard</a>
+                    <a href={{url('/dashboard')}} ><i class="fa fa-dashboard fa-3x"></i>Dashboard</a>
                 </li>
             @endif
             @if($a == 0 )
             <li>
-                <a href="http://127.0.0.1:8000/admin" ><i class="fa fa-users fa-3x"></i>Data Admin</a>
+                <a href="{{url('admin')}}"><i class="fa fa-users fa-3x"></i>Data Admin</a>
             </li>
             @endif
             @if($a == 0 || $a == 1)
             <li>
-                <a href="http://127.0.0.1:8000/anggota" ><i class="fa fa-users fa-3x"></i>Data Anggota</a>
+                <a href="{{url('anggota')}}"><i class="fa fa-users fa-3x"></i>Data Anggota</a>
             </li>
             <li>
                 <a  href="{{url('buku')}}"><i class="fa fa-table fa-3x"></i>Data Buku</a>
@@ -36,7 +36,7 @@
                 <a  href="{{url('laporan')}}"><i class="fa fa-book fa-3x"></i>Profile</a>
             </li>
             <li>
-                <a  href="{{url('laporan')}}"><i class="fa fa-book fa-3x"></i>Katalog</a>
+                <a  href="{{url('katalog')}}"><i class="fa fa-book fa-3x"></i>Katalog</a>
             </li>
             <li>
                 <a  href="{{url('laporan')}}"><i class="fa fa-book fa-3x"></i>History</a>

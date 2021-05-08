@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
+Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
@@ -36,7 +36,7 @@ Route::resource('anggota', AnggotaController::class);
 // Route::get('/cari', [AnggotaController::class,'cari'])->name('Anggota.cari');;
 Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
-// Route::resource('katalog', KatalogController::class);
+Route::resource('katalog', KatalogController::class);
 Route::resource('admin', AdminController::class);
 
 Route::prefix('siswa')->group(function () {
@@ -44,8 +44,9 @@ Route::prefix('siswa')->group(function () {
     Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
     Route::put('/edit/{nis}', [SiswaController::class,'update'])->name('siswa.update');
     Route::get('/{nis}/riwayat', [SiswaController::class,'show'])->name('siswa.show');
-    Route::get('/{nis}/katalog', [SiswaController::class, 'katalog'])->name('siswa.katalog');
+
 });
+
 
 Auth::routes();
 
