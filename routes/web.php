@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
@@ -38,6 +38,7 @@ Route::resource('buku', BukuController::class);
 Route::resource('transaksi', TransaksiController::class);
 // Route::resource('katalog', KatalogController::class);
 Route::resource('admin', AdminController::class);
+
 Route::prefix('siswa')->group(function () {
     Route::get('/{nis}', [SiswaController::class,'index'])->name('siswa.index');
     Route::get('/edit/{nis}', [SiswaController::class,'edit'])->name('siswa.edit');
@@ -47,6 +48,7 @@ Route::prefix('siswa')->group(function () {
 });
 
 Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('laporan')->group(function () {
@@ -57,4 +59,8 @@ Route::prefix('laporan')->group(function () {
     Route::get('/cetak_buku', [LaporanController::class,'cetak_buku'])->name('laporan.buku');
     Route::get('/cetak_anggota', [LaporanController::class,'cetak_anggota'])->name('laporan.anggota');
     Route::get('/cetak_transaksi', [LaporanController::class,'cetak_transaksi'])->name('laporan.transaksi');
+});
+
+Route::get('/', function () {
+    return view('auth.login');
 });
